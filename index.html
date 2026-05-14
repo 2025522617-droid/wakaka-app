@@ -1085,57 +1085,55 @@
 
 <script>
 // ============================== MENU DATA ==============================
-const img = (id, w, h) => `https://loremflickr.com/${w}/${h}/food,${id}?lock=${id.charCodeAt(0)+id.length}`;
-
 const menuData = [
   {
-    name: 'Waffles', icon: img('waffle',100,100),
+    name: 'Waffles', icon: 'https://loremflickr.com/100/100/food,waffle?lock=1',
     items: [
-      { name: 'Classic Waffle', desc: 'Golden crisp with butter & maple syrup', price: 6.90, image: img('waffle',400,400) },
-      { name: 'Chocolate Dream', desc: 'Belgian choc drizzle & chocolate chips', price: 8.90, image: img('chocolate-waffle',400,400) },
-      { name: 'Strawberry Bliss', desc: 'Fresh strawberries & cream', price: 9.90, image: img('strawberry-waffle',400,400) },
-      { name: 'Blueberry Burst', desc: 'Blueberry compote & yogurt drizzle', price: 10.90, image: img('blueberry-waffle',400,400) },
-      { name: 'Matcha Mania', desc: 'Premium matcha glaze & red beans', price: 10.50, image: img('matcha-waffle',400,400) },
+      { name: 'Classic Waffle', desc: 'Golden crisp with butter & maple syrup', price: 6.90, image: 'https://loremflickr.com/400/400/food,waffle?lock=10' },
+      { name: 'Chocolate Dream', desc: 'Belgian choc drizzle & chocolate chips', price: 8.90, image: 'https://cdn.shopify.com/s/files/1/0173/8181/8422/files/20240523183203-screenshot-202024-05-10-20at-204.png?v=1716489126&width=1600&height=900' },
+      { name: 'Strawberry Bliss', desc: 'Fresh strawberries & cream', price: 9.90, image: 'https://loremflickr.com/400/400/food,strawberry-waffle?lock=12' },
+      { name: 'Blueberry Burst', desc: 'Blueberry compote & yogurt drizzle', price: 10.90, image: 'https://fantabulosity.com/wp-content/uploads/2022/04/Blueberry-Waffles.jpg' },
+      { name: 'Matcha Mania', desc: 'Premium matcha glaze & red beans', price: 10.50, image: 'https://olivesandlamb.com/wp-content/uploads/2024/03/Matcha-Mochi-Waffles-64x5-1-500x500.jpg' },
     ]
   },
   {
-    name: 'Croffles', icon: img('croissant',100,100),
+    name: 'Croffles', icon: 'https://loremflickr.com/100/100/food,croissant?lock=2',
     items: [
-      { name: 'Classic Croffle', desc: 'Buttery croissant-waffle with honey', price: 7.90, image: img('croissant',400,400) },
-      { name: 'Chocolate Croffle', desc: 'Nutella-filled croissant waffle', price: 9.50, image: img('chocolate-croissant',400,400) },
-      { name: 'Caramel Crunch', desc: 'Salted caramel sauce & crushed nuts', price: 9.90, image: img('caramel-croissant',400,400) },
-      { name: 'Strawberry Dream', desc: 'Cream cheese & fresh strawberries', price: 10.90, image: img('strawberry-croissant',400,400) },
-      { name: 'Nutella Paradise', desc: 'Double Nutella with hazelnut crunch', price: 11.50, image: img('nutella-croissant',400,400) },
+      { name: 'Classic Croffle', desc: 'Buttery croissant-waffle with honey', price: 7.90, image: 'https://cookingfrog.com/wp-content/uploads/2022/11/Homemade-Croffle-Recipe-Croissant-Waffles.jpg' },
+      { name: 'Chocolate Croffle', desc: 'Nutella-filled croissant waffle', price: 9.50, image: 'https://famcafe.ebteq.com/assets/img/choco-croffle.jpg' },
+      { name: 'Caramel Crunch', desc: 'Salted caramel sauce & crushed nuts', price: 9.90, image: 'https://i0.wp.com/www.theunstumbled.com/wp-content/uploads/2025/07/Maple-butter-croffle.jpg?resize=700%2C515&ssl=1' },
+      { name: 'Strawberry Dream', desc: 'Cream cheese & fresh strawberries', price: 10.90, image: 'https://i0.wp.com/amorosogelateria.com.au/wp-content/uploads/2024/08/strawberry.jpg?fit=1000%2C1000&ssl=1' },
+      { name: 'Nutella Paradise', desc: 'Double Nutella with hazelnut crunch', price: 11.50, image: 'https://tyummies.com/cdn/shop/products/nutela-croffle-1.jpg?v=1692857251' },
     ]
   },
   {
-    name: 'Corn in Cup', icon: img('corn',100,100),
+    name: 'Corn in Cup', icon: 'https://loremflickr.com/100/100/food,corn?lock=3',
     items: [
-      { name: 'Classic Butter', desc: 'Steamed corn with salted butter', price: 4.50, image: img('corn-butter',400,400) },
-      { name: 'Cheese Blast', desc: 'Shredded cheddar & parmesan', price: 5.90, image: img('corn-cheese',400,400) },
-      { name: 'BBQ Bliss', desc: 'Smoky BBQ seasoning & butter', price: 5.50, image: img('corn-bbq',400,400) },
-      { name: 'Spicy Kick', desc: 'Chili flakes, lime & sea salt', price: 5.50, image: img('corn-spicy',400,400) },
-      { name: 'Mayo Magic', desc: 'Japanese mayo & bonito flakes', price: 6.50, image: img('corn-mayo',400,400) },
+      { name: 'Classic Butter', desc: 'Steamed corn with salted butter', price: 4.50, image: 'https://loremflickr.com/400/400/food,butter-corn?lock=30' },
+      { name: 'Cheese Blast', desc: 'Shredded cheddar & parmesan', price: 5.90, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS47gnKUsFw71OSBWbZkVAnoRbm7wAEI3JADA&s' },
+      { name: 'BBQ Bliss', desc: 'Smoky BBQ seasoning & butter', price: 5.50, image: 'https://www.thegunnysack.com/wp-content/uploads/2023/06/Corn-In-A-Cup-Esquites.jpg' },
+      { name: 'Spicy Kick', desc: 'Chili flakes, lime & sea salt', price: 5.50, image: 'https://www.kitchenwrangler.com/wp-content/uploads/2022/04/Chorizo-corn-in-a-cup-1-819x1024.jpg' },
+      { name: 'Mayo Magic', desc: 'Japanese mayo & bonito flakes', price: 6.50, image: 'https://urbanfarmie.com/wp-content/uploads/Corn-in-a-Cup-3.jpg' },
     ]
   },
   {
-    name: 'Boba Milk', icon: img('bubble-tea',100,100),
+    name: 'Boba Milk', icon: 'https://loremflickr.com/100/100/food,bubble-tea?lock=4',
     items: [
-      { name: 'Classic Brown Sugar', desc: 'Fresh milk with brown sugar boba', price: 8.90, image: img('bubble-tea',400,400) },
-      { name: 'Taro Delight', desc: 'Creamy taro with tapioca pearls', price: 9.90, image: img('taro-bubble',400,400) },
-      { name: 'Chocolate Boba', desc: 'Rich chocolate milk & boba', price: 9.50, image: img('chocolate-drink',400,400) },
-      { name: 'Matcha Boba', desc: 'Premium matcha with chewy pearls', price: 10.50, image: img('matcha-tea',400,400) },
-      { name: 'Strawberry Milk', desc: 'Fresh strawberry puree & boba', price: 9.90, image: img('strawberry-drink',400,400) },
+      { name: 'Classic Brown Sugar', desc: 'Fresh milk with brown sugar boba', price: 8.90, image: 'https://simplyhomecooked.com/wp-content/uploads/2023/04/Brown-sugar-boba-6.jpg' },
+      { name: 'Taro Delight', desc: 'Creamy taro with tapioca pearls', price: 9.90, image: 'https://bobanutrition.co/cdn/shop/articles/taro_milk_tea_near_me_1600x.jpg?v=1694903643' },
+      { name: 'Chocolate Boba', desc: 'Rich chocolate milk & boba', price: 9.50, image: 'https://i.pinimg.com/736x/c0/7f/60/c07f60bbd7accf7bae89a5167c636b21.jpg' },
+      { name: 'Matcha Boba', desc: 'Premium matcha with chewy pearls', price: 10.50, image: 'https://abeautifulmess.com/wp-content/uploads/2024/04/matcha-boba-recipe.jpg' },
+      { name: 'Strawberry Milk', desc: 'Fresh strawberry puree & boba', price: 9.90, image: 'https://cdn.shopify.com/s/files/1/0903/3020/2438/files/Strawberry_fruit_boba_tea.jpg?v=1745919370' },
     ]
   },
   {
-    name: 'Smoothies', icon: img('smoothie',100,100),
+    name: 'Smoothies', icon: 'https://loremflickr.com/100/100/food,smoothie?lock=5',
     items: [
-      { name: 'Mango Tango', desc: 'Alphonso mango & yogurt blend', price: 8.90, image: img('mango-smoothie',400,400) },
-      { name: 'Strawberry Blast', desc: 'Fresh berries & banana', price: 8.90, image: img('strawberry-smoothie',400,400) },
-      { name: 'Banana Honey', desc: 'Ripe banana with wild honey', price: 7.90, image: img('banana-smoothie',400,400) },
-      { name: 'Berry Mix', desc: 'Mixed berries & Greek yogurt', price: 10.50, image: img('berry-smoothie',400,400) },
-      { name: 'Green Power', desc: 'Spinach, apple, ginger & lime', price: 9.90, image: img('green-smoothie',400,400) },
+      { name: 'Mango Tango', desc: 'Alphonso mango & yogurt blend', price: 8.90, image: 'https://cdn.shopify.com/s/files/1/0774/6813/9813/files/20241114015816-dvgmangosmoothie_015_smoothiemix_photoshoot_2024_recipe_1000x_22ef7cd5-c2cf-4beb-9d65-6305335ccf2f.webp?v=1731549499&width=600&height=900' },
+      { name: 'Strawberry Blast', desc: 'Fresh berries & banana', price: 8.90, image: 'https://foodsharingvegan.com/wp-content/uploads/2022/03/Strawberry-Yogurt-Smoothie-Plant-Based-on-a-Budget-1-2.jpg' },
+      { name: 'Banana Honey', desc: 'Ripe banana with wild honey', price: 7.90, image: 'https://www.chocolatemoosey.com/wp-content/uploads/2013/01/Banana-Mango-Smoothie-recipe-photo-1867b.jpg' },
+      { name: 'Berry Mix', desc: 'Mixed berries & Greek yogurt', price: 10.50, image: 'https://simplegraytshirt.com/wp-content/uploads/2024/10/mixed-berry-smoothie-featured.jpg' },
+      { name: 'Green Power', desc: 'Spinach, apple, ginger & lime', price: 9.90, image: 'https://urbanfoodrecipes.com/wp-content/uploads/2025/02/Matcha-Green-Tea-Smoothie-–-Energy-Boosting-Antioxidant-Rich-1.webp' },
     ]
   },
 ];
