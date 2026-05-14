@@ -283,6 +283,11 @@
       background: var(--yellow-light); display: flex;
       align-items: center; justify-content: center;
       font-size: 26px; transition: var(--transition);
+      overflow: hidden;
+    }
+    .cat-pill .cat-icon img {
+      width: 100%; height: 100%; object-fit: cover;
+      border-radius: 50%;
     }
     .cat-pill.active .cat-icon { background: var(--yellow); box-shadow: 0 4px 12px rgba(245,197,24,0.3); }
     .cat-pill span { font-size: 12px; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
@@ -305,6 +310,11 @@
       background: var(--yellow-light); border-radius: var(--radius-sm);
       display: flex; align-items: center; justify-content: center;
       font-size: 40px; margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .food-card .food-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      border-radius: var(--radius-sm);
     }
     .food-card h4 { font-size: 14px; font-weight: 700; }
     .food-card .food-desc { font-size: 11px; color: var(--text-light); margin: 2px 0 6px; }
@@ -396,7 +406,11 @@
       width: 100%; aspect-ratio: 16/10; border-radius: var(--radius);
       background: linear-gradient(135deg, var(--yellow-light), var(--green-soft));
       display: flex; align-items: center; justify-content: center;
-      font-size: 72px; margin-bottom: 20px;
+      font-size: 72px; margin-bottom: 20px; overflow: hidden;
+    }
+    .detail-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      border-radius: var(--radius);
     }
     .detail-title { font-size: 24px; font-weight: 800; color: var(--green); }
     .detail-price { font-size: 22px; font-weight: 800; color: var(--yellow-dark); margin: 4px 0 8px; }
@@ -449,7 +463,11 @@
       width: 60px; height: 60px; border-radius: var(--radius-sm);
       background: var(--yellow-light); display: flex;
       align-items: center; justify-content: center; font-size: 28px;
-      flex-shrink: 0;
+      flex-shrink: 0; overflow: hidden;
+    }
+    .cart-item .ci-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      border-radius: var(--radius-sm);
     }
     .cart-item .ci-info { flex: 1; }
     .cart-item .ci-info h4 { font-size: 14px; font-weight: 700; }
@@ -1067,58 +1085,62 @@
 
 <script>
 // ============================== MENU DATA ==============================
+const img = (id, w, h) => `https://loremflickr.com/${w}/${h}/food,${id}?lock=${id.charCodeAt(0)+id.length}`;
+
 const menuData = [
   {
-    name: 'Waffles', icon: '&#129374;',
+    name: 'Waffles', icon: img('waffle',100,100),
     items: [
-      { name: 'Classic Waffle', desc: 'Golden crisp with butter & maple syrup', price: 6.90, emoji: '&#129374;' },
-      { name: 'Chocolate Dream', desc: 'Belgian choc drizzle & chocolate chips', price: 8.90, emoji: '&#127851;' },
-      { name: 'Strawberry Bliss', desc: 'Fresh strawberries & cream', price: 9.90, emoji: '&#127827;' },
-      { name: 'Blueberry Burst', desc: 'Blueberry compote & yogurt drizzle', price: 10.90, emoji: '&#127826;' },
-      { name: 'Matcha Mania', desc: 'Premium matcha glaze & red beans', price: 10.50, emoji: '&#127861;' },
+      { name: 'Classic Waffle', desc: 'Golden crisp with butter & maple syrup', price: 6.90, image: img('waffle',400,400) },
+      { name: 'Chocolate Dream', desc: 'Belgian choc drizzle & chocolate chips', price: 8.90, image: img('chocolate-waffle',400,400) },
+      { name: 'Strawberry Bliss', desc: 'Fresh strawberries & cream', price: 9.90, image: img('strawberry-waffle',400,400) },
+      { name: 'Blueberry Burst', desc: 'Blueberry compote & yogurt drizzle', price: 10.90, image: img('blueberry-waffle',400,400) },
+      { name: 'Matcha Mania', desc: 'Premium matcha glaze & red beans', price: 10.50, image: img('matcha-waffle',400,400) },
     ]
   },
   {
-    name: 'Croffles', icon: '&#129360;',
+    name: 'Croffles', icon: img('croissant',100,100),
     items: [
-      { name: 'Classic Croffle', desc: 'Buttery croissant-waffle with honey', price: 7.90, emoji: '&#129360;' },
-      { name: 'Chocolate Croffle', desc: 'Nutella-filled croissant waffle', price: 9.50, emoji: '&#127851;' },
-      { name: 'Caramel Crunch', desc: 'Salted caramel sauce & crushed nuts', price: 9.90, emoji: '&#127847;' },
-      { name: 'Strawberry Dream', desc: 'Cream cheese & fresh strawberries', price: 10.90, emoji: '&#127827;' },
-      { name: 'Nutella Paradise', desc: 'Double Nutella with hazelnut crunch', price: 11.50, emoji: '&#129473;' },
+      { name: 'Classic Croffle', desc: 'Buttery croissant-waffle with honey', price: 7.90, image: img('croissant',400,400) },
+      { name: 'Chocolate Croffle', desc: 'Nutella-filled croissant waffle', price: 9.50, image: img('chocolate-croissant',400,400) },
+      { name: 'Caramel Crunch', desc: 'Salted caramel sauce & crushed nuts', price: 9.90, image: img('caramel-croissant',400,400) },
+      { name: 'Strawberry Dream', desc: 'Cream cheese & fresh strawberries', price: 10.90, image: img('strawberry-croissant',400,400) },
+      { name: 'Nutella Paradise', desc: 'Double Nutella with hazelnut crunch', price: 11.50, image: img('nutella-croissant',400,400) },
     ]
   },
   {
-    name: 'Corn in Cup', icon: '&#127805;',
+    name: 'Corn in Cup', icon: img('corn',100,100),
     items: [
-      { name: 'Classic Butter', desc: 'Steamed corn with salted butter', price: 4.50, emoji: '&#127805;' },
-      { name: 'Cheese Blast', desc: 'Shredded cheddar & parmesan', price: 5.90, emoji: '&#129472;' },
-      { name: 'BBQ Bliss', desc: 'Smoky BBQ seasoning & butter', price: 5.50, emoji: '&#127858;' },
-      { name: 'Spicy Kick', desc: 'Chili flakes, lime & sea salt', price: 5.50, emoji: '&#127798;' },
-      { name: 'Mayo Magic', desc: 'Japanese mayo & bonito flakes', price: 6.50, emoji: '&#129744;' },
+      { name: 'Classic Butter', desc: 'Steamed corn with salted butter', price: 4.50, image: img('corn-butter',400,400) },
+      { name: 'Cheese Blast', desc: 'Shredded cheddar & parmesan', price: 5.90, image: img('corn-cheese',400,400) },
+      { name: 'BBQ Bliss', desc: 'Smoky BBQ seasoning & butter', price: 5.50, image: img('corn-bbq',400,400) },
+      { name: 'Spicy Kick', desc: 'Chili flakes, lime & sea salt', price: 5.50, image: img('corn-spicy',400,400) },
+      { name: 'Mayo Magic', desc: 'Japanese mayo & bonito flakes', price: 6.50, image: img('corn-mayo',400,400) },
     ]
   },
   {
-    name: 'Boba Milk', icon: '&#129347;',
+    name: 'Boba Milk', icon: img('bubble-tea',100,100),
     items: [
-      { name: 'Classic Brown Sugar', desc: 'Fresh milk with brown sugar boba', price: 8.90, emoji: '&#129347;' },
-      { name: 'Taro Delight', desc: 'Creamy taro with tapioca pearls', price: 9.90, emoji: '&#127818;' },
-      { name: 'Chocolate Boba', desc: 'Rich chocolate milk & boba', price: 9.50, emoji: '&#127851;' },
-      { name: 'Matcha Boba', desc: 'Premium matcha with chewy pearls', price: 10.50, emoji: '&#127861;' },
-      { name: 'Strawberry Milk', desc: 'Fresh strawberry puree & boba', price: 9.90, emoji: '&#127827;' },
+      { name: 'Classic Brown Sugar', desc: 'Fresh milk with brown sugar boba', price: 8.90, image: img('bubble-tea',400,400) },
+      { name: 'Taro Delight', desc: 'Creamy taro with tapioca pearls', price: 9.90, image: img('taro-bubble',400,400) },
+      { name: 'Chocolate Boba', desc: 'Rich chocolate milk & boba', price: 9.50, image: img('chocolate-drink',400,400) },
+      { name: 'Matcha Boba', desc: 'Premium matcha with chewy pearls', price: 10.50, image: img('matcha-tea',400,400) },
+      { name: 'Strawberry Milk', desc: 'Fresh strawberry puree & boba', price: 9.90, image: img('strawberry-drink',400,400) },
     ]
   },
   {
-    name: 'Smoothies', icon: '&#127864;',
+    name: 'Smoothies', icon: img('smoothie',100,100),
     items: [
-      { name: 'Mango Tango', desc: 'Alphonso mango & yogurt blend', price: 8.90, emoji: '&#129389;' },
-      { name: 'Strawberry Blast', desc: 'Fresh berries & banana', price: 8.90, emoji: '&#127827;' },
-      { name: 'Banana Honey', desc: 'Ripe banana with wild honey', price: 7.90, emoji: '&#127820;' },
-      { name: 'Berry Mix', desc: 'Mixed berries & Greek yogurt', price: 10.50, emoji: '&#127826;' },
-      { name: 'Green Power', desc: 'Spinach, apple, ginger & lime', price: 9.90, emoji: '&#127807;' },
+      { name: 'Mango Tango', desc: 'Alphonso mango & yogurt blend', price: 8.90, image: img('mango-smoothie',400,400) },
+      { name: 'Strawberry Blast', desc: 'Fresh berries & banana', price: 8.90, image: img('strawberry-smoothie',400,400) },
+      { name: 'Banana Honey', desc: 'Ripe banana with wild honey', price: 7.90, image: img('banana-smoothie',400,400) },
+      { name: 'Berry Mix', desc: 'Mixed berries & Greek yogurt', price: 10.50, image: img('berry-smoothie',400,400) },
+      { name: 'Green Power', desc: 'Spinach, apple, ginger & lime', price: 9.90, image: img('green-smoothie',400,400) },
     ]
   },
 ];
+
+const _imgs = (url, alt, round) => `<img src="${url}" alt="${alt}" loading="lazy" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;border-radius:${round}">`;
 
 let currentCategory = 0;
 let currentItem = null;
@@ -1168,7 +1190,7 @@ function renderHome() {
   const pills = document.getElementById('categoryPills');
   pills.innerHTML = menuData.map((cat, i) => `
     <div class="cat-pill" onclick="goToCategory(${i})">
-      <div class="cat-icon">${cat.icon}</div>
+      <div class="cat-icon">${_imgs(cat.icon, cat.name, '50%')}</div>
       <span>${cat.name}</span>
     </div>
   `).join('');
@@ -1178,7 +1200,7 @@ function renderHome() {
   const grid = document.getElementById('popularGrid');
   grid.innerHTML = popular.map(item => `
     <div class="food-card" onclick="openDetail(${menuData.indexOf(menuData[0])},${menuData[0].items.indexOf(item)})">
-      <div class="food-img">${item.emoji}</div>
+      <div class="food-img">${_imgs(item.image, item.name, 'var(--radius-sm)')}</div>
       <h4>${item.name}</h4>
       <div class="food-desc">${item.desc}</div>
       <div class="food-bottom">
@@ -1201,7 +1223,7 @@ function renderCategory() {
   const grid = document.getElementById('catGrid');
   grid.innerHTML = cat.items.map((item, i) => `
     <div class="food-card" onclick="openDetail(${currentCategory},${i})">
-      <div class="food-img">${item.emoji}</div>
+      <div class="food-img">${_imgs(item.image, item.name, 'var(--radius-sm)')}</div>
       <h4>${item.name}</h4>
       <div class="food-desc">${item.desc}</div>
       <div class="food-bottom">
@@ -1219,7 +1241,7 @@ function openDetail(catIdx, itemIdx) {
   const cat = menuData[catIdx];
   const item = cat.items[itemIdx];
   document.getElementById('detailCatLabel').textContent = cat.name;
-  document.getElementById('detailImg').innerHTML = item.emoji;
+  document.getElementById('detailImg').innerHTML = _imgs(item.image, item.name, 'var(--radius)');
   document.getElementById('detailName').textContent = item.name;
   document.getElementById('detailPrice').textContent = `RM ${item.price.toFixed(2)}`;
   document.getElementById('detailDesc').textContent = item.desc;
@@ -1305,7 +1327,7 @@ function renderCart() {
     const item = menuData[c.catIdx].items[c.itemIdx];
     return `
       <div class="cart-item">
-        <div class="ci-img">${item.emoji}</div>
+        <div class="ci-img">${_imgs(item.image, item.name, 'var(--radius-sm)')}</div>
         <div class="ci-info">
           <h4>${item.name}</h4>
           <div class="ci-variant">${menuData[c.catIdx].name}</div>
