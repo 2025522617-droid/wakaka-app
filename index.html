@@ -833,7 +833,7 @@
   <div class="home-content" style="flex:1;overflow-y:auto">
     <div class="home-search">
       <span class="search-icon">&#128269;</span>
-      <input placeholder="Search waffles, boba, treats...">
+      <input id="searchInput" placeholder="Search waffles, boba, treats..." oninput="doSearch(this.value)">
     </div>
     <div class="promo-banner">
       <h3>Buy 1 Get 1 Free!</h3>
@@ -841,10 +841,14 @@
       <button class="promo-btn" onclick="goToCategory(0)">Order Now</button>
       <span class="promo-emoji">&#129374;</span>
     </div>
-    <div class="section-title"><h2>Menu</h2><span onclick="goToCategory(0)">See All</span></div>
+    <div class="section-title" id="menuSectionTitle"><h2>Menu</h2><span onclick="goToCategory(0)">See All</span></div>
     <div class="category-scroll" id="categoryPills"></div>
-    <div class="section-title"><h2>Popular Items</h2><span>View All</span></div>
+    <div class="section-title" id="popularSectionTitle"><h2>Popular Items</h2><span>View All</span></div>
     <div class="food-grid" id="popularGrid"></div>
+    <div id="searchResults" style="display:none">
+      <div class="section-title"><h2>Search Results</h2><span id="searchCount"></span></div>
+      <div class="food-grid" id="searchGrid"></div>
+    </div>
   </div>
   <div class="bottom-nav">
     <button class="nav-item active"><span class="ni-icon">&#127968;</span><span>Home</span></button>
@@ -1180,6 +1184,59 @@ function navigateDrawer(screen, catIdx) {
   toggleDrawer();
   if (catIdx !== undefined) { currentCategory = catIdx; renderCategory(); }
   goTo(screen);
+}
+
+// ============================== SEARCH ==============================
+function doSearch(q) {
+  const results = document.getElementById('searchResults');
+  const grid = document.getElementById('searchGrid');
+  const count = document.getElementById('searchCount');
+  const promo = document.querySelector('.promo-banner');
+  const menuTitle = document.getElementById('menuSectionTitle');
+  const pills = document.getElementById('categoryPills');
+  const popTitle = document.getElementById('popularSectionTitle');
+  const popGrid = document.getElementById('popularGrid');
+
+
+  q = q.trim().toLowerCase();
+  if (!q) {
+    results.style.display = 'none';
+    promo.style.display = ''; menuTitle.style.display = ''; pills.style.display = '';
+    popTitle.style.display = ''; popGrid.style.display = '';
+    return;
+  }
+
+  promo.style.display = 'none'; menuTitle.style.display = 'none'; pills.style.display = 'none';
+  popTitle.style.display = 'none'; popGrid.style.display = 'none';
+  results.style.display = '';
+
+  const matches = [];
+  menuData.forEach((cat, ci) => {
+    cat.items.forEach((item, ii) => {
+      if (item.name.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q) || cat.name.toLowerCase().includes(q)) {
+        matches.push({ catIdx: ci, itemIdx: ii, cat: cat, item: item });
+      }
+    });
+  });
+
+  count.textContent = matches.length + ' found';
+
+  if (matches.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px 20px;color:var(--text-light)"><div style="font-size:48px;margin-bottom:8px">&#128270;</div><p style="font-size:16px;font-weight:600;color:var(--text-secondary)">No results found</p><p style="font-size:13px;margin-top:4px">Try a different search term</p></div>';
+    return;
+  }
+
+  grid.innerHTML = matches.map(m => `
+    <div class="food-card" onclick="openDetail(${m.catIdx},${m.itemIdx})">
+      <div class="food-img">${_imgs(m.item.image, m.item.name, 'var(--radius-sm)')}</div>
+      <h4>${m.item.name}</h4>
+      <div class="food-desc" style="font-size:11px;color:var(--text-light)">${m.cat.name} &middot; ${m.item.desc}</div>
+      <div class="food-bottom">
+        <span class="food-price">RM ${m.item.price.toFixed(2)}</span>
+        <button class="add-btn" onclick="event.stopPropagation();quickAdd(${m.catIdx},${m.itemIdx})">+</button>
+      </div>
+    </div>
+  `).join('');
 }
 
 // ============================== HOME ==============================
